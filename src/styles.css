@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+body > div {
+  width: 100%;
+}
+
+.Applet {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Canvas {
+  margin-bottom: 1rem;
+}
+
+.AngleSlider {
+  width: 100%;
+}
+
+.AngleSlider__Input {
+  width: 100%;
+}
