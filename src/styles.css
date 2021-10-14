@@ -1,6 +1,29 @@
 body {
   margin: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+p:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+* {
+  box-sizing: inherit;
 }
 
 body > div {
@@ -8,21 +31,99 @@ body > div {
 }
 
 .Applet {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-flow: column wrap;
 }
 
 .Canvas {
-  margin-bottom: 1rem;
+  background: rgb(245, 245, 245);
+  width: 100%;
+  height: 70vh;
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+}
+
+.Canvas--Explore svg {
+  height: 100%;
+}
+
+.Canvas--ImageDistance svg {
+  max-height: 90%;
+}
+
+.BottomModule {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1.5fr;
+  width: 100%;
+  height: 30vh;
+  padding: 1rem 2rem;
+}
+
+.BottomModule__Control {
+  padding-right: 2.5rem;
+  border-right: 1px solid black;
+  margin-right: 2.5rem;
+  height: 100%;
+}
+
+.BottomModule__Text {
+  line-height: 1.5;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .AngleSlider {
-  width: 100%;
+  width: 500px;
 }
 
 .AngleSlider__Input {
   width: 100%;
+}
+
+.MirrorImage {
+  cursor: pointer;
+}
+
+.MirrorImage__Frame {
+  opacity: 0.1;
+}
+
+.MirrorImage__Frame:hover {
+  opacity: 0.15;
+}
+
+.Button {
+  background: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+}
+
+.Button:hover {
+  background: black;
+  color: white;
+}
+
+.ImageDistance-Scene--Flipped {
+  transform: scale(-1, 1);
+}
+
+.ImageDistance-Scene .Object,
+.ImageDistance-Scene--Mirrored .Wall,
+.ImageDistance-Scene--Mirrored .Observer,
+.ImageDistance-Scene .RaySegment:not(.RaySegment--Highlighted) {
+  filter: grayscale(1);
+  opacity: 0.25;
+}
+
+.Focus-OriginalSegments.ImageDistance-Scene--Original .Object,
+.Focus-MirroredSegments.ImageDistance-Scene--WithImage .Object {
+  opacity: 1;
+  filter: grayscale(0);
 }
