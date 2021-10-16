@@ -385,14 +385,14 @@ traceRayRecursively :
     -> TraceResult
 traceRayRecursively trajectory { prevReflection, trace } =
     let
-        maybePrevReflectionSide =
-            prevReflection |> Maybe.map .side
+        notLastMirroredWall { mirrored } =
+            mirrored == Nothing || mirrored /= Maybe.map .side prevReflection
 
         -- Check if we've hit a wall
         maybeWallHit : Maybe WallHit
         maybeWallHit =
             box
-                |> List.filter (.mirrored >> (/=) maybePrevReflectionSide)
+                |> List.filter notLastMirroredWall
                 |> List.foldr
                     (\wall acc_ ->
                         case acc_ of
